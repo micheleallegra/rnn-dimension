@@ -1,14 +1,16 @@
-# Updated Recurrent Neural Network Implementation
+import numpy as np
+from scipy.spatial.distance import pdist, squareform
 
-class RecurrentNeuralNetwork:
-    def __init__(self, strength=None, K=None):
-        self.strength = strength  # Strength parameter for Gaussian connectivity
-        self.K = K  # K parameter for Erdős-Rényi connectivity
-        # Additional initialization...
-
-    def connect(self):
-        # Implementation for Gaussian connectivity using strength
-        # Implementation for Erdős-Rényi connectivity using K
-        pass
-
-    # Other methods for the recurrent neural network...
+class ContinuousTimeRNN:
+    """
+    Continuous-time recurrent neural network with Euler integration.
+    
+    Supports multiple connectivity types:
+    - 'gaussian': Random Gaussian weights with controllable strength
+    - 'erdos_renyi': Erdős-Rényi random graph with K connections per neuron
+    - 'geometric': Geometric random graph
+    - 'geometric_inhibitory': Geometric graph with inhibitory neurons
+    
+    All eigenvalues are constrained to be negative, with the largest
+    eigenvalue slightly below zero for stability.
+    "
